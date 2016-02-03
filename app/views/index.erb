@@ -1,6 +1,6 @@
 <h1>All Tasks</h1>
 
-<ol>
+<ol id="tasks">
   <% @tasks.each do |task| %>
     <li><a href="/tasks/<%= task.id %>"><%= task.title %></a></li>
     <a href="/tasks/<%= task.id %>/edit">Edit</a>
