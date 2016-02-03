@@ -1,0 +1,9 @@
+<form action="/tasks/<%= @task.id %>" method="post">
+  <input type="hidden" name="_method" value="put">
+  <h1>Update that task!</h1>
+  <h2>Task:</h2>
+  <input type='text' name='task[title]' value="<%= @task.title %>"/>
+  <h2>Description:</h2>
+  <textarea name='task[description]' rows='20' columns='40'><%= @task.description %></textarea>
+  <input class="btn btn-primary" type='submit'/>
+</form>
