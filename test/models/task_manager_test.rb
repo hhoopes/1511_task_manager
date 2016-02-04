@@ -13,13 +13,16 @@ class TaskManagerTest < Minitest::Test
   end
 
   def test_can_create_a_task
-    create_tasks(1)
+    task_manager.create(
+      title:       "title1",
+      description: "description1"
+    )
 
     task = task_manager.all.last
 
     assert task.id
-    assert_equal "title#{task.id}", task.title
-    assert_equal "description#{task.id}", task.description
+    assert_equal "title1", task.title
+    assert_equal "description1", task.description
   end 
 
   def test_it_finds_all_tasks
@@ -27,20 +30,21 @@ class TaskManagerTest < Minitest::Test
 
     assert_equal 3, task_manager.all.count
 
-    task_manager.all.each do |task|
+    task_manager.all.each_with_index do |task, index|
       assert_equal Task, task.class
-      assert_equal "title#{task.id}", task.title
-      assert_equal "description#{task.id}", task.description
+      assert_equal "title#{index+1}", task.title
+      assert_equal "description#{index+1}", task.description
     end
   end
 
   def test_it_finds_a_specific_task
+    create_tasks(3)
     ids = task_manager.all.map { |task| task.id }
 
     ids.each_with_index do |id, index|
       task = task_manager.find(id)
       assert_equal id, task.id
-      assert_equal "task#{index+1}", task.title
+      assert_equal "title#{index+1}", task.title
       assert_equal "description#{index+1}", task.description
     end
   end
@@ -65,7 +69,7 @@ class TaskManagerTest < Minitest::Test
     create_tasks(3)
     
     initial_count = task_manager.all.count
-
+    
     task_manager.delete(2)
 
     final_count = task_manager.all.count

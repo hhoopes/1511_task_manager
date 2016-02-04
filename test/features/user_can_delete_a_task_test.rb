@@ -8,7 +8,7 @@ class UserCanDeleteAnExistingTask < FeatureTest
     })
 
     visit '/tasks'
-    save_and_open_page
+
     assert page.has_content? 'Original Title'
 
     click_button 'Delete'
