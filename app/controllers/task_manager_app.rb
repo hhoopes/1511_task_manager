@@ -1,5 +1,3 @@
-require 'yaml/store'
-
 class TaskManagerApp < Sinatra::Base
   get '/' do
     erb :dashboard

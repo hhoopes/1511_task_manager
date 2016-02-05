@@ -3,9 +3,9 @@ require_relative '../test_helper'
 class TaskTest < Minitest::Test
   def test_task_attributes_assigned_correctly
     data = {
-      "id"          => 1,
-      "title"       => "my task",
-      "description" => "something"
+      :id           => 1,
+      :title        => "my task",
+      :description  => "something"
     }
 
     task = Task.new(data)

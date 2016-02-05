@@ -4,6 +4,8 @@ require File.expand_path('../../config/environment', __FILE__)
 require 'minitest/autorun'
 require 'minitest/pride'
 require 'tilt/erb'
+require 'capybara'
+require 'capybara/dsl'
 
 module TestHelpers
   def setup
